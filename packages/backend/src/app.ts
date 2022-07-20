@@ -12,7 +12,7 @@ import {
     wrap,
 } from "./controller/serverController";
 import cors from "cors";
-import { authorizeUser } from "./controller/socketController";
+import { addFriend, authorizeUser, dm, initializeUser, MessageProp, onDisconnect } from "./controller/socketController";
 
 dotenv.config();
 const server = httpServer.createServer(app);
@@ -30,8 +30,12 @@ app.use("/auth", authRoute);
 io.use(wrap(sessionMiddleware));
 io.use(authorizeUser)
 io.on("connect", (socket: any) => {
-   console.log(socket.user.userid);
-   
+    initializeUser(socket)
+    socket.on("add_friend", (friendName: string, cb: ({ done, errorMsg, newFriend}: { done: boolean; errorMsg?: string, newFriend?: {[key:string]: string} }) => void) => {addFriend(socket, friendName, cb)})
+    socket.on("dm",(message: MessageProp) => {
+        dm(socket,message)
+    })
+    socket.on("disconnecting", () => onDisconnect(socket))
 });
 
 server.listen(4000, () => {
