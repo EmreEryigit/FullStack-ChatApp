@@ -26,8 +26,8 @@ const Sidebar = () => {
                 <Circle background="green.500" minW="10px" minH="10px"/>
                     <Text>John Smith</Text>
                 </HStack> */}
-                {ctx.friendList.map((friend) => (
-                     <HStack as={Tab}>
+                {ctx.friendList.map((friend,i) => (
+                     <HStack as={Tab} key={i}>
                      <Circle background={friend.connected ? "green.700": "red.500"} minW="10px" minH="10px"/>
                          <Text>{friend.username}</Text>
                      </HStack>

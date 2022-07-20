@@ -1,7 +1,9 @@
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(28) NOT NULL UNIQUE,
-    passhasH INT NOT NULL
+    passhasH VARCHAR(255) NOT NULL,
+    userid VARCHAR(255) NOT NULL UNIQUE
+
 );
 
 INSERT INTO users (username, passhash) VALUES ();

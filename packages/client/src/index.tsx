@@ -12,15 +12,15 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <>
-            <BrowserRouter>
-        <AccountContextProvider>
+        <BrowserRouter>
+            <AccountContextProvider>
                 <ColorModeScript
                     initialColorMode={theme.config.initialColorMode}
                 />
                 <ChakraProvider theme={theme}>
                     <App />
                 </ChakraProvider>
-        </AccountContextProvider>
-            </BrowserRouter>
+            </AccountContextProvider>
+        </BrowserRouter>
     </>
 );
