@@ -7,7 +7,7 @@ import cors from "cors"
 import authRoute from "./router/authRouter"
 import session from "express-session"
 import dotenv from "dotenv"
-import Redis from "ioredis"
+import { redisClient } from "../redis"
 import Store from "connect-redis"
 const RedisStore = Store(session)
 
@@ -19,7 +19,7 @@ const io = new Server(server, {
         credentials: true
     }
 })
-const redisClient = new Redis()
+ 
 
 app.use(helmet())
 app.use(express.json())
