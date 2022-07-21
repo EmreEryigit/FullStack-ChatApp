@@ -1,5 +1,5 @@
 # FullStack-ChatApp
-*Programming language: Typescript
+
 ## Frontend
 * React
 * Yup
@@ -19,3 +19,6 @@
 ## Databases
 * Postgres
 * Redis
+
+## Programming Language
+* Typescript
